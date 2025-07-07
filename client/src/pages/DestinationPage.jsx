@@ -43,8 +43,3 @@ const DestinationPage = () => {
 };
 
 export default DestinationPage;
-
-/* ## 6⃣️ DestinationPage & Card Updates
-
-- Add a button to each `DestinationCard` to navigate to the `DestinationPage` showing detailed information.
-- Add a button to each `DestinationCard` to **delete** the destination from the database and update the `HomePage`. */
