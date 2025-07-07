@@ -1,6 +1,30 @@
 import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DestinationCard = ({ destination }) => {
+  const [isDeleted, setIsDeleted] = useState(false);
+  const navigate = useNavigate();
+
+  const deleteDestination = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:1988/api/destinations/delete/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to delete destination");
+      }
+      setIsDeleted(true);
+    } catch (error) {
+      console.error("Error deleting destination:", error);
+    }
+  };
+
+  if (isDeleted) return null;
+
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-md mx-auto mb-6 p-2 text-center">
       <h2 className="text-xl font-bold text-gray-800 mb-2">
@@ -37,6 +61,12 @@ const DestinationCard = ({ destination }) => {
           {destination.visited ? "Visited" : "Unvisited"}
         </span>
       </p>
+      <button
+        onClick={() => deleteDestination(destination._id)}
+        className="bg-red-500 text-white px-4 py-2 rounded mt-2 hover:bg-red-600 transition duration-300 cursor-pointer"
+      >
+        Delete
+      </button>
     </div>
   );
 };

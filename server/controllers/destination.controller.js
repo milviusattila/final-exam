@@ -88,8 +88,17 @@ export const deleteDestinationById = async (req, res) => {
 
 ///--- ADD NEW DESTINATION ---///
 export const addDestination = async (req, res) => {
-  const { name, country, img, description, estimatedCost, bestSeason } =
-    req.body;
+  const {
+    name,
+    country,
+    img,
+    description,
+    estimatedCost,
+    bestSeason,
+    visited,
+  } = req.body;
+  console.log("Adding new destination:", req.body);
+
   try {
     if (
       !name ||
@@ -109,7 +118,7 @@ export const addDestination = async (req, res) => {
       description,
       estimatedCost,
       bestSeason,
-      visited: false,
+      visited,
     });
 
     const destination = await Destination.create(newDestination);

@@ -13,6 +13,7 @@ const HomePage = () => {
     useState(null);
   const [showVisitedOnly, setShowVisitedOnly] = useState(false);
 
+  /* SORT DESTINATIONS BY ESTIMATED COST */
   const sortDestinationsByEstimatedCost = (destinations, order = "asc") => {
     const sorted = [...destinations].sort((a, b) =>
       order === "asc"
@@ -22,6 +23,7 @@ const HomePage = () => {
     return sorted;
   };
 
+  /* FETCH DESTINATIONS */
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
@@ -108,8 +110,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-/* - Display a centered **My Travel Bucket List** title at the top.
-- Show all destinations in cards, sorted by `estimatedCost`.
-- In a separate section show only `visited` destinations.
-- Find the cheapest unvisited destination and display it. */

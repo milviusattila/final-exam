@@ -20,12 +20,12 @@ const Navbar = () => {
         >
           Create
         </Link>
-        <Link
+        {/*         <Link
           to="/destinations"
           className="hover:underline font-bold text-white ml-4"
         >
           Destinations
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
