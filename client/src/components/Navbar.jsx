@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CreatePage from "../pages/CreatePage";
+import CreatePage from "../pages/CreatePage"; // Felesleges importok
 import DestinationPage from "../pages/DestinationPage";
 import HomePage from "../pages/HomePage";
 
@@ -20,6 +20,9 @@ const Navbar = () => {
         >
           Create
         </Link>
+
+        {/* Ne hagyj kommentet a kódban amikor feltöltöd. */}
+
         {/*         <Link
           to="/destinations"
           className="hover:underline font-bold text-white ml-4"

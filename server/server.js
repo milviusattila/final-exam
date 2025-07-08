@@ -1,5 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
+import mongoose from "mongoose"; // Felesleges import
 import dotenv from "dotenv";
 import { connectDB } from "./config/connectDb.js";
 import destinationRoutes from "./routes/destination.routes.js";
@@ -10,6 +10,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 1988;
 
+// használsz cors-t backend-en és proxyt frontenden, az egyik elég lenne.
+// ha azért csináltál proxyt hogy legyen prefix és ne kelljen kiírni a localhost-ot mindig frontend fetchelésnél akkor elfogadom.
 app.use(
   cors({
     origin: "http://localhost:5173",

@@ -18,7 +18,11 @@ export const getAllDestinations = async (req, res) => {
 
 ///--- GET DESTINATION BY ID ---///
 export const getDestinationById = async (req, res) => {
+  // Lehetne validálni az id-t még azelőtt hogy elkérjük a destination-t
   const { id } = req.params.id;
+  /* if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: "Invalid destination ID format" });
+  } */
   try {
     const destination = await Destination.findById(id);
     if (!destination) {
@@ -33,7 +37,7 @@ export const getDestinationById = async (req, res) => {
 
 ///--- UPDATE DESTINATION BY ID ---///
 export const updateDestinationById = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; // Felesleges kód
   try {
     const { name, country, img, description, estimatedCost, bestSeason } =
       req.body;

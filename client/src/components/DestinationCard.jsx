@@ -1,10 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Felesleges import
 
-const DestinationCard = ({ destination }) => {
-  const [isDeleted, setIsDeleted] = useState(false);
-  const navigate = useNavigate();
+const DestinationCard = ({ destination /* , onDelete */ }) => {
+  const [isDeleted, setIsDeleted] = useState(false); // felesleges state
+  const navigate = useNavigate(); // nem használod sehol
+
+  // Ha a handleDelete a HomePage componensben lenne kidolgozva akkor tudnád benne használni a destinations state setterjét
+  // és ezt át tudnád adni a Card-nak propként. Ezzel a megoldással a delete változtatná a couses statet és újrarenderelődne a componens, jelenleg te csak az adatbazisbol törlöd.
 
   const deleteDestination = async (id) => {
     try {
@@ -18,6 +21,8 @@ const DestinationCard = ({ destination }) => {
         throw new Error("Failed to delete destination");
       }
       setIsDeleted(true);
+      //window.location.reload();  // ez nagyon fapados megoldás de működne a mostani verzióddal.
+      //Frissíti a page-t ugye ilyenkor minden újrafetchelődik és eltűnik a törölt destionation
     } catch (error) {
       console.error("Error deleting destination:", error);
     }
@@ -63,6 +68,7 @@ const DestinationCard = ({ destination }) => {
       </p>
       <button
         onClick={() => deleteDestination(destination._id)}
+        /* onClick={() => onDelete(destination._id)} */
         className="bg-red-500 text-white px-4 py-2 rounded mt-2 hover:bg-red-600 transition duration-300 cursor-pointer"
       >
         Delete

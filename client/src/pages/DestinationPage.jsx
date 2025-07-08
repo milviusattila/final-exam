@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom"; // useNavigate felesleges
 
 const DestinationPage = () => {
   const [destination, setDestination] = useState(null);
-  const navigate = useNavigate();
+  // const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // nem használod nehol
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,6 +23,9 @@ const DestinationPage = () => {
       } catch (error) {
         console.error("Error fetching destination:", error);
       }
+      /* finally{
+        setLoading(false)
+      } */
     };
     fetchDestination();
   }, [id]);
@@ -29,6 +33,9 @@ const DestinationPage = () => {
   if (!destination) {
     return <div>Loading...</div>;
   }
+
+  // if (loading) return <div>Loading...</div>;
+  // if (!destination) return <div>Destination not found</div>;
 
   return (
     <div>
