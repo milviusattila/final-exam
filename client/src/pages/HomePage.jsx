@@ -28,7 +28,7 @@ const HomePage = () => {
     return sorted;
   };
 
-  /* FETCH DESTINATIONS */
+  /* FETCH DESTINATIONS */  // FetchDestination csak a fetchelésért kéne hogy felelős legyen.
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
